@@ -1,9 +1,6 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+Blog Site powered by Rails. CRUD (Creat Read Update Delete) Application.
 
 * Ruby version
 
@@ -22,3 +19,12 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+## Rails Resource
+* **Create** Instances of - Create new posts
+* **Read data** for - Read post data
+* **Update data** for - Update or change data
+* **Delete** Instance of - Delete posts
+
+## Rails Scaffolding
+Creating the MVC (Model, View, Controller) at once.
