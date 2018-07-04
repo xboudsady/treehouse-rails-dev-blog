@@ -18,4 +18,8 @@ class PagesController < ApplicationController
         redirect_to @page                                                   # After submission, redirect to that new page
     end
 
+    def edit
+        @page = Page.find(params[:id])
+    end
+
 end
