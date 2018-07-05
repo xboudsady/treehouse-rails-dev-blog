@@ -11,15 +11,32 @@ class PagesController < ApplicationController
         @page = Page.new                        # Create a new instance object
     end
 
-    def create
-        page_params = params.require(:page).permit(:title, :body, :slug)    # Pass permission of parameters
-        @page = Page.new(page_params)                                       # Create an instance variable with a new Page instance
-        @page.save                                                          # Save the record to database
-        redirect_to @page                                                   # After submission, redirect to that new page
+    def create    
+        @page = Page.new(page_params)                           # Create an instance variable with a new Page instance
+        @page.save                                              # Save the record to database
+        redirect_to @page                                       # After submission, redirect to that new page
     end
 
     def edit
         @page = Page.find(params[:id])
     end
+
+    def update
+        @page = Page.find(params[:id])
+        @page.update(page_params)
+        redirect_to @page
+    end
+
+    def destroy
+        @page = Page.find(params[:id])
+        @page.destroy
+        redirect_to pages_path
+    end
+
+    private
+
+        def page_params
+            params.require(:page).permit(:title, :body, :slug)      # Pass permission of parameters
+        end
 
 end
