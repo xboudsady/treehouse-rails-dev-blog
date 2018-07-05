@@ -1,10 +1,11 @@
 class PagesController < ApplicationController
+    before_action :set_page, only: [:show, :edit, :update, :destroy]
+    
     def index
         @pages = Page.all                       # Page.all is a method to call in the database, store in an instances variable to be access
     end                                         # Make sure a model exist, because we are calling Page.all
     
     def show                                    # From the #show routes
-        @page = Page.find(params[:id])          # Pass this data
     end
 
     def new
@@ -18,17 +19,14 @@ class PagesController < ApplicationController
     end
 
     def edit
-        @page = Page.find(params[:id])
     end
 
     def update
-        @page = Page.find(params[:id])
         @page.update(page_params)
         redirect_to @page
     end
 
     def destroy
-        @page = Page.find(params[:id])
         @page.destroy
         redirect_to pages_path
     end
@@ -38,5 +36,10 @@ class PagesController < ApplicationController
         def page_params
             params.require(:page).permit(:title, :body, :slug)      # Pass permission of parameters
         end
+
+        def set_page
+            @page = Page.find(params[:id])
+        end
+
 
 end
